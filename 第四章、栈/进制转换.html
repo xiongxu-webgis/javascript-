@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基础HTML框架</title>
+
+</head>
+
+<body>
+    <div class="container">
+
+    </div>
+</body>
+<script type="module">
+    import Stack from "./Stack.js";
+    let baseConvert = (decNum,base) =>{
+        if(base>16){
+            return "超出十六进制"
+        }
+        let rem = null
+        let stack = new Stack()
+        let number = decNum
+        let convertString = ""
+        const digits = "0123456789ABCDEF"
+        while(number){
+            rem = number%base
+            stack.push(rem)
+            number = Math.floor(number/base)
+        }
+        while(!stack.isEmpty()){
+            convertString+=digits[stack.pop()]
+        }
+        console.log(convertString)
+    }
+    baseConvert(16,16)
+</script>
+<style>
+
+</style>
+
+</html>
