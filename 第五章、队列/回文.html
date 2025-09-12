@@ -1,0 +1,55 @@
+<!--
+ * @Author: xiongxu-webgis
+ * @Email: 1833104160@qq.com
+ * @Date: 2025-09-12 11:22:18
+ * @LastEditors: xiongxu-webgis
+ * @LastEditTime: 2025-09-12 15:39:05
+ * @FilePath: \javascript-\第五章、队列\回文.html
+ * @Description: 
+ * 
+ * Copyright (c) 2025 by 1833104160@qq.com, All Rights Reserved. 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回文检查器</title>
+
+</head>
+
+<body>
+    <div class="container">
+
+    </div>
+</body>
+<script type="module">
+    import {Deque} from "./Queue.js";
+    let stringCheaker = (aString) =>{
+        if(aString.length===0){
+            return false
+        }
+        const lowerString = aString.toLowerCase().split(" ").join("")
+        const deque = new Deque()
+        let firstChar,lastChar
+        for(let i=0;i<lowerString.length;i++){
+            deque.addBack(lowerString[i])
+        }
+        while(deque.size()>1){
+            firstChar = deque.removeFront()
+            lastChar = deque.removeBack()
+            if(firstChar!==lastChar){
+                return false
+            }
+        }
+        return true
+    }
+    console.log(stringCheaker("Hello"))
+    console.log(stringCheaker("racecar"))
+</script>
+<style>
+
+</style>
+
+</html>

@@ -1,0 +1,51 @@
+<!--
+ * @Author: xiongxu-webgis
+ * @Email: 1833104160@qq.com
+ * @Date: 2025-09-12 09:47:33
+ * @LastEditors: xiongxu-webgis
+ * @LastEditTime: 2025-09-12 14:55:00
+ * @FilePath: \javascript-\第五章、队列\击鼓传花.html
+ * @Description: 
+ * 
+ * Copyright (c) 2025 by 1833104160@qq.com, All Rights Reserved. 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>击鼓传花</title>
+  </head>
+
+  <body>
+    <div class="container"></div>
+  </body>
+  <script type="module">
+    import { Queue } from "./Queue.js";
+    let hotPotato = (elementList, num) => {
+      if (num < 1 || elementList.length < 3) {
+        return "num必须大于1,且元素个数必须大于2";
+      }
+      let elimitateList = [];
+      let queue = new Queue();
+      for (let i = 0; i < elementList.length; i++) {
+        queue.enqueue(elementList[i]);
+      }
+      while (queue.size() > 1) {
+        for (let i = 0; i < num; i++) {
+          if (i === num - 1) {
+            elimitateList.push(queue.dequeue());
+          } else {
+            queue.enqueue(queue.dequeue());
+          }
+        }
+      }
+      return {
+        elimitate: elimitateList,
+        winner: queue.dequeue(),
+      };
+    };
+    console.log(hotPotato(["小明", "小红", "小刚", "小李", "小王"], 3));
+  </script>
+  <style></style>
+</html>

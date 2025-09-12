@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>基础HTML框架</title>
+    <title>进制转换</title>
 
 </head>
 
@@ -32,9 +32,14 @@
         while(!stack.isEmpty()){
             convertString+=digits[stack.pop()]
         }
-        console.log(convertString)
+        return convertString
     }
-    baseConvert(16,16)
+    console.log(baseConvert(16,16))
+    let stack = new Stack()
+    stack.push(5)
+    stack.push(8)
+    console.log(stack.toString())
+
 </script>
 <style>
 

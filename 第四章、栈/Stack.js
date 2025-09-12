@@ -32,9 +32,11 @@ export default class Stack {
             return ""
         }
         let result = ""
-        while(!this.isEmpty()){
-            result+=`,${this.pop()}`
+        let index = this.count
+        while(index>0){
+            result+=`,${this[this.#sym][index-1]}`
+            index--
         }
-        return result.slice(1)
+        return result.split("").slice(1).reverse().join("")
     }
 }
