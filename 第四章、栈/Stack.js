@@ -22,10 +22,7 @@ export default class Stack {
         return this.count - 1
     }
     isEmpty(){
-        if (this.count == 0) {
-            return true
-        }
-        return false
+        return this.size === 0
     }
     toString(){
         if (this.isEmpty()) {
